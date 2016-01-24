@@ -69,5 +69,19 @@ var formattedRole = HTMLheaderRole.replace("%data%",bio.role);
 $("#header").prepend(formattedRole);
 $("#header").prepend(formattedName);
 
+for (var i in work.jobs) {
+  $("#workExperience").append(HTMLworkStart);
+  var formattedEmployer = HTMLworkEmployer.replace("%data%",work.jobs[i].employer);
+  var formattedTitle = HTMLworkTitle.replace("%data%",work.jobs[i].title);
+  var formattedDates = HTMLworkDates.replace("%data%",work.jobs[i].dates);
+  var formattedLocation = HTMLworkLocation.replace("%data%",work.jobs[i].location);
+  var formattedDescription = HTMLworkDescription.replace("%data%",work.jobs[i].description);
+
+  $(".work-entry:last").append(formattedEmployer + formattedTitle);
+  $(".work-entry:last").append(formattedDates);
+  $(".work-entry:last").append(formattedLocation);
+  $(".work-entry:last").append(formattedDescription);
+}
+
 //$("#main").append(work["position"]);
 //$("#main").append(education.name);

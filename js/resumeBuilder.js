@@ -1,8 +1,3 @@
-
-/*
-This is empty on purpose! Your code to build the resume will go here.
- */
-
 var bio = {
   "name" : "Paul S",
   "role" : "Novice Web Developer",
@@ -31,7 +26,6 @@ var bio = {
     $("#header").append(HTMLskillsStart);
     for(i in bio.skills) {
   		$("#skills").append(HTMLskills.replace("%data%", bio.skills[i]));
-      console.log(bio.skills[i]);
   	}
 
     for(i in formattedContactInfo) {
@@ -154,4 +148,4 @@ bio.display();
 project.display();
 work.display();
 education.display();
-$("#main").append(googleMap);
+$("#main").prepend(googleMap);

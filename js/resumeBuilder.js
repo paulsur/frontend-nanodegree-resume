@@ -35,7 +35,7 @@ var bio = {
   }
 };
 
-var project = {
+var projects = {
   "projects" : [
     {
       "title" : "Project 1",
@@ -51,12 +51,12 @@ var project = {
     }
   ],
   "display" : function() {
-    for (var i in project.projects) {
+    for (var i in projects.projects) {
       $("#projects").append(HTMLprojectStart);
-      $(".project-entry:last").append(HTMLprojectTitle.replace("%data%",project.projects[i].title));
-      $(".project-entry:last").append(HTMLprojectDates.replace("%data%",project.projects[i].date));
-      $(".project-entry:last").append(HTMLprojectDescription.replace("%data%",project.projects[i].description));
-      $(".project-entry:last").append(HTMLprojectImage.replace("%data%",project.projects[i].image));
+      $(".project-entry:last").append(HTMLprojectTitle.replace("%data%",projects.projects[i].title));
+      $(".project-entry:last").append(HTMLprojectDates.replace("%data%",projects.projects[i].date));
+      $(".project-entry:last").append(HTMLprojectDescription.replace("%data%",projects.projects[i].description));
+      $(".project-entry:last").append(HTMLprojectImage.replace("%data%",projects.projects[i].image));
     }
   }
 };
@@ -148,7 +148,7 @@ var education = {
 };
 
 bio.display();
-project.display();
+projects.display();
 work.display();
 education.display();
 $("#main").prepend(googleMap);

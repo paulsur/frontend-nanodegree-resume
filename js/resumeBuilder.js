@@ -3,7 +3,7 @@ var bio = {
   "role" : "Novice Web Developer",
   "contacts" : {
     "mobile" : "403-555-5555",
-    "email" : "paulsur at gmail.com",
+    "email" : "paulsur at g mail dott com",
     "github" : "paulsur",
     "location" : "Calgary, AB"
   },
@@ -88,8 +88,7 @@ var work = {
   "display" : function() {
     for (var i in work.jobs) {
       $("#workExperience").append(HTMLworkStart);
-      $(".work-entry:last").append(HTMLworkEmployer.replace("%data%",work.jobs[i].employer));
-      $(".work-entry:last").append(HTMLworkTitle.replace("%data%",work.jobs[i].title));
+      $(".work-entry:last").append(HTMLworkEmployer.replace("%data%",work.jobs[i].employer) + HTMLworkTitle.replace("%data%",work.jobs[i].title));
       $(".work-entry:last").append(HTMLworkDates.replace("%data%",work.jobs[i].dates));
       $(".work-entry:last").append(HTMLworkLocation.replace("%data%",work.jobs[i].location));
       $(".work-entry:last").append(HTMLworkDescription.replace("%data%",work.jobs[i].description));
@@ -126,8 +125,7 @@ var education = {
     $("#education").append(HTMLschoolStart);
     for (var i in education.schools) {
       var schoolObj = education.schools[i];
-      $(".education-entry:last").append(HTMLschoolName.replace("%data%",schoolObj.name));
-      $(".education-entry:last").append(HTMLschoolDegree.replace("%data%",schoolObj.degree));
+      $(".education-entry:last").append(HTMLschoolName.replace("%data%",schoolObj.name) + HTMLschoolDegree.replace("%data%",schoolObj.degree));
       $(".education-entry:last").append(HTMLschoolDates.replace("%data%",schoolObj.dates));
       $(".education-entry:last").append(HTMLschoolLocation.replace("%data%",schoolObj.location));
       $(".education-entry:last").append(HTMLschoolMajor.replace("%data%",schoolObj.major));
@@ -136,8 +134,7 @@ var education = {
     $("#education").append(HTMLonlineClasses);
     for (i in education.onlineCourses) {
       var courseObj = education.onlineCourses[i];
-      $(".online-entry:last").append(HTMLonlineTitle.replace("%data%",courseObj.title));
-      $(".online-entry:last").append(HTMLonlineSchool.replace("%data%",courseObj.school));
+      $(".online-entry:last").append(HTMLonlineTitle.replace("%data%",courseObj.title) + HTMLonlineSchool.replace("%data%",courseObj.school));
       $(".online-entry:last").append(HTMLonlineDates.replace("%data%",courseObj.dates));
       $(".online-entry:last").append(HTMLonlineURL.replace("%data%",courseObj.url));
     }

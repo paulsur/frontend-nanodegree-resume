@@ -9,11 +9,11 @@ var bio = {
   },
   "welcomeMessage" : "Welcome to my web developer resume website!",
   "skills" : [ "HTML", "CSS", "JavaScript", "Excel", "PowerPoint"],
-  "bioPic" : "images/ninja-logo.png",
+  "biopic" : "images/ninja-logo.png",
   "display" : function() {
     var i = 0;
     $("#header").prepend(HTMLwelcomeMsg.replace("%data%",bio.welcomeMessage));
-    $("#header").prepend(HTMLbioPic.replace("%data%",bio.bioPic));
+    $("#header").prepend(HTMLbioPic.replace("%data%",bio.biopic));
     $("#header").prepend(HTMLheaderRole.replace("%data%",bio.role));
     $("#header").prepend(HTMLheaderName.replace("%data%",bio.name));
 
@@ -102,40 +102,46 @@ var education = {
       "name" : "University of Calgary",
       "location" : "Calgary",
       "degree" : "Bsc",
-      "major" : "Computer Science",
-      "dates" : "2000 - 2006"
+      "majors" : ["Computer Science"],
+      "dates" : "2000 - 2006",
+      "url" : "http://www.ucalgary.ca" //not displayed, no HTMLSchoolUrl variable...
     },
     {
       "name" : "University of Calgary",
       "location" : "Calgary",
       "degree" : "BComm",
-      "major" : "Finance",
-      "dates" : "2000 - 2006"
+      "majors" : ["Finance"],
+      "dates" : "2000 - 2006",
+      "url" : "http://www.ucalgary.ca" //not displayed, no HTMLSchoolUrl variable...
     }
   ],
   "onlineCourses" : [
     {
-      "school" : "Udacity",
       "title" : "Frontend Web Developer Nano Degree",
-      "dates" : "2015",
+      "school" : "Udacity",
+      "date" : "2015",
       "url" : "http://udacity.com"
     }
   ],
   "display" : function() {
+    var i = 0;
+    var j = 0;
     $("#education").append(HTMLschoolStart);
-    for (var i in education.schools) {
+    for (i in education.schools) {
       var schoolObj = education.schools[i];
       $(".education-entry:last").append(HTMLschoolName.replace("%data%",schoolObj.name) + HTMLschoolDegree.replace("%data%",schoolObj.degree));
       $(".education-entry:last").append(HTMLschoolDates.replace("%data%",schoolObj.dates));
       $(".education-entry:last").append(HTMLschoolLocation.replace("%data%",schoolObj.location));
-      $(".education-entry:last").append(HTMLschoolMajor.replace("%data%",schoolObj.major));
+      for (j in schoolObj.majors) {
+        $(".education-entry:last").append(HTMLschoolMajor.replace("%data%",schoolObj.majors[j]));
+      }
     }
 
     $("#education").append(HTMLonlineClasses);
     for (i in education.onlineCourses) {
       var courseObj = education.onlineCourses[i];
       $(".online-entry:last").append(HTMLonlineTitle.replace("%data%",courseObj.title) + HTMLonlineSchool.replace("%data%",courseObj.school));
-      $(".online-entry:last").append(HTMLonlineDates.replace("%data%",courseObj.dates));
+      $(".online-entry:last").append(HTMLonlineDates.replace("%data%",courseObj.date));
       $(".online-entry:last").append(HTMLonlineURL.replace("%data%",courseObj.url));
     }
   }

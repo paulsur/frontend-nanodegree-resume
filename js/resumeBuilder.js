@@ -10,30 +10,34 @@ var bio = {
     "mobile" : "403-555-5555",
     "email" : "paulsur at gmail.com",
     "github" : "paulsur",
-    "location" : "Calgary"
+    "location" : "Calgary, AB"
   },
-  "welcomeMessage" : "Welcome to this resume website!",
-  "skills" : [ "web development", "Microsoft Excel", "grilling steak"],
-  "bioPic" : "https://www.365ninja.com/wp-content/themes/senorclippy/images/ninja-logo.png",
+  "welcomeMessage" : "Welcome to my web developer resume website!",
+  "skills" : [ "HTML", "CSS", "JavaScript", "Excel", "PowerPoint"],
+  "bioPic" : "images/ninja-logo.png",
   "display" : function() {
-    var formattedName = HTMLheaderName.replace("%data%",bio.name);
-    var formattedRole = HTMLheaderRole.replace("%data%",bio.role);
-    $("#header").prepend(formattedRole);
-    $("#header").prepend(formattedName);
+    var i = 0;
+    $("#header").prepend(HTMLwelcomeMsg.replace("%data%",bio.welcomeMessage));
+    $("#header").prepend(HTMLbioPic.replace("%data%",bio.bioPic));
+    $("#header").prepend(HTMLheaderRole.replace("%data%",bio.role));
+    $("#header").prepend(HTMLheaderName.replace("%data%",bio.name));
 
-    $("#header").append(HTMLcontactGeneric);
-    for (var i in bio.contacts) {
-      varFormattedmobile = HTMLmobile.replace("%data%",bio.contacts[i].mobile);
-      varFormattedEmail = HTMLemail.replace("%data%",bio.contacts[i].email);
-      varFormattedEmail = HTMLtwitter.replace("%data%",bio.contacts[i].twitter);
-      varFormattedEmail = HTMLgithub.replace("%data%",bio.contacts[i].github);
-      varFormattedEmail = HTMLlocation.replace("%data%",bio.contacts[i].location);
+    var formattedContactInfo = [];
+    formattedContactInfo.push(HTMLemail.replace("%data%", bio.contacts.mobile));
+    formattedContactInfo.push(HTMLemail.replace("%data%", bio.contacts.email));
+    formattedContactInfo.push(HTMLgithub.replace("%data%", bio.contacts.github));
+    formattedContactInfo.push(HTMLlocation.replace("%data%", bio.contacts.location));
 
-      $(".project-entry:last").append(formattedTitle);
+    $("#header").append(HTMLskillsStart);
+    for(i in bio.skills) {
+  		$("#skills").append(HTMLskills.replace("%data%", bio.skills[i]));
+      console.log(bio.skills[i]);
+  	}
+
+    for(i in formattedContactInfo) {
+    	$("#topContacts").append(formattedContactInfo[i]);
+    	$("#footerContacts").append(formattedContactInfo[i]);
     }
-    var formattedImage = HTMLprojectImage.replace("%data%",project.projects[i].image);
-
-
   }
 };
 
@@ -43,13 +47,13 @@ var project = {
       "title" : "Project 1",
       "date" : "Recent Date",
       "description" : "A most recent project I worked on",
-      "image" : "http://sharepointmaven.com/wp-content/uploads/2015/11/project-management.png"
+      "image" : "images/project1.png"
     },
     {
       "title" : "Project 2",
       "date" : "Also Recent Date",
       "description" : "A second most recent project I worked on",
-      "image" : "https://thewaterproject.org/images/default_profile_pic.gif"
+      "image" : "images/project2.gif"
     }
   ],
   "display" : function() {
@@ -166,9 +170,7 @@ var education = {
   }
 };
 
-
-
-
+bio.display();
 project.display();
 work.display();
 education.display();
